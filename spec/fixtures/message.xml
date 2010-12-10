@@ -1,0 +1,50 @@
+<message type="chat" from="firehoser.superfeedr.com" to="kapoq@superfeedr.com"><active xmlns="http://jabber.org/protocol/chatstates"/>
+  <event xmlns="http://jabber.org/protocol/pubsub#event">
+    <status xmlns="http://superfeedr.com/xmpp-pubsub-ext" feed="http://superfeedr.com/dummy.xml">
+      <http code="200">7462B in 2.441718s, 2/10 new entries</http>
+      <next_fetch>2010-12-10T16:06:41Z</next_fetch>
+      <title>The Dummy Time Feed</title>
+      <entries_count_since_last_maintenance>19</entries_count_since_last_maintenance>
+      <period>450</period>
+      <last_fetch>2010-12-10T15:59:11Z</last_fetch>
+      <last_parse>2010-12-10T15:59:11Z</last_parse>
+      <last_maintenance_at>2010-12-10T06:25:29+00:00</last_maintenance_at>
+    </status>
+    <items node="http://superfeedr.com/dummy.xml">
+      <item xmlns="http://jabber.org/protocol/pubsub">
+        <entry xmlns="http://www.w3.org/2005/Atom" xmlns:geo="http://www.georss.org/georss" xmlns:as="http://activitystrea.ms/spec/1.0/" xmlns:sf="http://superfeedr.com/xmpp-pubsub-ext" lang="en-US">
+          <id>tag:superfeedr.com,2005:String/1291996755</id>
+          <published>2010-12-10T15:59:15+00:00</published>
+          <updated>2010-12-10T15:59:15+00:00</updated>
+          <title>15:59:15</title>
+          <content type="text">Friday December 10 15:59:15 UTC 2010 Somebody wanted to know what time it was.</content>
+          <geo:point>37.773721,-122.414957</geo:point>
+          <link type="text/html" title="15:59:15" rel="alternate" href="http://superfeedr.com/?1291996755"/>
+          <category term="tests"/>
+          <author>
+            <name>Superfeedr</name>
+            <uri>http://superfeedr.com/</uri>
+            <email>julien@superfeedr.com</email>
+          </author>
+        </entry>
+      </item>
+      <item xmlns="http://jabber.org/protocol/pubsub">
+        <entry xmlns="http://www.w3.org/2005/Atom" xmlns:geo="http://www.georss.org/georss" xmlns:as="http://activitystrea.ms/spec/1.0/" xmlns:sf="http://superfeedr.com/xmpp-pubsub-ext" lang="en-US">
+          <id>tag:superfeedr.com,2005:String/1291996758</id>
+          <published>2010-12-10T15:59:18+00:00</published>
+          <updated>2010-12-10T15:59:18+00:00</updated>
+          <title>15:59:18</title>
+          <content type="text">Friday December 10 15:59:18 UTC 2010 Somebody wanted to know what time it was.</content>
+          <geo:point>37.773721,-122.414957</geo:point>
+          <link type="text/html" title="15:59:18" rel="alternate" href="http://superfeedr.com/?1291996758"/>
+          <category term="tests"/>
+          <author>
+            <name>Superfeedr</name>
+            <uri>http://superfeedr.com/</uri>
+            <email>julien@superfeedr.com</email>
+          </author>
+        </entry>
+      </item>
+    </items>
+  </event>
+</message>
