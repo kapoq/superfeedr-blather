@@ -4,6 +4,7 @@ require 'bundler/setup'
 Bundler.require(:default)
 
 ATOM = "http://www.w3.org/2005/Atom"
+GEO  = "http://www.georss.org/georss"
 
 module Blather
   class Stanza::PubSub::Event
@@ -21,24 +22,13 @@ module Blather
 
   class Stanza::PubSubItem
     def entry
-      find("./atom:entry", :atom => ATOM).map { |n| Stanza::Superfeedr::Entry.new(n) }
+      n = find("./atom:entry", :atom => ATOM)
+      Stanza::Superfeedr::Entry.new(n) unless n.nil?
     end
   end
 
 
-    # link
-    # category
-    # point
-    # author
-
-    # entry[@xml:lang] : The language of the entry. It's either extracted or computed from the content (the longer t# he content, the more relevant).
-
-    # entry[@published] : The publication date (iso8601) of the entry.
-    # entry[@updated] : The last updated date (iso8601) of the entry.
-    # entry[@content] : The content of the entry. Check the type attribute to determine the mime-type.
-    # entry[@summary] (optional, unique) : The summary of the entry. Check the type attribute to determine the mime-type  
-
-# status[@feed] : contains the URL of the feed.
+  # status[@feed] : contains the URL of the feed.
     # status[@digest] : if sets to true; it indicates that the notification is a digest.
     # http[@code] : last HTTP status code, please see Status Code Definitions.
     # http : the content of that tag is a more explicit log message for your information.
@@ -68,15 +58,63 @@ module Blather
       content_from("./atom:title", :atom => ATOM)
     end
 
-    def link
-      @node.find_first("./atom:link/@href", :atom => ATOM)
+    # entry[@published] : The publication date (iso8601) of the entry.
+    def published_at
+      str = content_from("./atom:published", :atom => ATOM)
+      DateTime.parse(str) if str
+    end    
+
+    # entry[@updated] : The last updated date (iso8601) of the entry.
+    def updated_at
+      str = content_from("./atom:updated", :atom => ATOM)
+      DateTime.parse(str) if str
+    end
+        
+    # entry[@content] : The content of the entry. Check the type attribute to determine the mime-type.
+    def content
+      content_from("atom:content", :atom => ATOM)
     end
 
-    def content_from(*args)
-      n = @node.find_first(*args)
-      n.text if n
+    def mime_type
+      content_from("atom:content/@type", :atom => ATOM)
+    end    
+
+    # entry[@summary] (optional, unique) : The summary of the entry. Check the type attribute to determine the mime-type  
+    def summary
+      content_from("atom:summary", :atom => ATOM)
     end
+
+    # entry[@xml:lang] : The language of the entry. It's either extracted or computed from the content (the longer t# he content, the more relevant).
+    def lang
+      content_from("@lang", :atom => ATOM)
+    end
+
+    def link
+      child = @node.xpath("./atom:link", :atom => ATOM)
+      Stanza::Superfeedr::Link.new(child) if child
+    end
+
+    def author
+      child = @node.xpath("./atom:author", :atom => ATOM)
+      Stanza::Superfeedr::Author.new(child) if child
+    end
+
+    def point
+      child = @node.xpath("./geo:point", :geo => GEO)
+      Stanza::Superfeedr::Point.new(child) if child
+    end
+
+    def category
+      child = @node.xpath("./atom:category", :atom => ATOM)      
+      Stanza::Superfeedr::Category.new(child) if child
+    end
+
+    private
     
+    def content_from(name, ns)
+      child = @node.xpath(name, ns).first
+      child.content if child
+    end
   end
 
   class Stanza::Superfeedr::Status

@@ -20,12 +20,59 @@ describe Blather::Stanza::PubSubItem do
 end
 
 describe Blather::Stanza::Superfeedr::Entry do
-  it "fails" do
-    XMPP_NODE.should_not be_nil
+  let(:entry) { XMPP_NODE.items.first.entry }
+
+  it "finds the id" do
+    entry.id.should == "tag:superfeedr.com,2005:String/1291996755"
+  end
+
+  it "finds the title" do
+    entry.title.should == "15:59:15"
+  end  
+
+  it "finds the date published" do
+    entry.published_at.should == DateTime.parse("2010-12-10T15:59:15+00:00")
+  end
+  
+  it "finds the date updated" do
+    entry.updated_at.should == DateTime.parse("2010-12-10T15:59:15+00:00")
+  end
+
+  it "finds the mime-type of the content" do
+    entry.mime_type.should == "text"
+  end  
+  
+  it "finds the content" do
+    entry.content.should == "Friday December 10 15:59:15 UTC 2010 Somebody wanted to know what time it was."
+  end
+
+  it "finds the summary" do
+    entry.summary.should == "A short message from our sponsors"
+  end
+
+  it "finds the lanugage" do
+    entry.lang.should == "en-US"
+  end
+
+  it "finds the link" do
+    entry.link.should be_instance_of(Blather::Stanza::Superfeedr::Link)
+  end
+  
+  it "finds the point" do
+    entry.point.should be_instance_of(Blather::Stanza::Superfeedr::Point)
+  end
+  
+  it "finds the category" do
+    entry.category.should be_instance_of(Blather::Stanza::Superfeedr::Category)
+  end
+  
+  it "finds the author" do
+    entry.author.should be_instance_of(Blather::Stanza::Superfeedr::Author)
   end  
 end
 
 describe Blather::Stanza::Superfeedr::Status do
+  
 end
 
 describe Blather::Stanza::Superfeedr::Link do
