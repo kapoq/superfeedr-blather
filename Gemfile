@@ -2,9 +2,9 @@ source "http://rubygems.org"
 
 gem 'blather'
 
-group :development do
-  gem 'blather', :require => 'blather/client'
-end
+# group :development do
+#   gem 'blather', :require => 'blather/client'
+# end
 
 group :test do
   gem 'rspec'
