@@ -63,30 +63,88 @@ describe Blather::Stanza::Superfeedr::Entry do
   end
   
   it "finds the categories" do
-    entry.categories.should have(1).item
+    entry.categories.should =~ %w(tests)
   end
   
   it "finds the authors" do
     entry.authors.should have(1).item
-  end  
+  end
 end
 
 describe Blather::Stanza::Superfeedr::Status do
-  
+  let(:status) { XMPP_NODE.status }
+    
+  it "finds the title" do
+    status.title.should == "The Dummy Time Feed"
+  end
+
+  it "finds the http status" do
+    status.http_code.should == "200"
+  end
+
+  it "finds the http response stats" do
+    status.http.should == "7462B in 2.441718s, 2/10 new entries"
+  end
+
+  it "finds the entries_count_since_last_maintenance" do
+    status.entries_count_since_last_maintenance.should == 19
+  end
+
+  it "finds the period" do
+    status.period.should == 450
+  end
+
+  it "finds the next fetch datetime" do
+    status.next_fetch.should == DateTime.parse("2010-12-10T16:06:41Z")
+  end  
 end
 
 describe Blather::Stanza::Superfeedr::Link do
+  let(:link) { XMPP_NODE.items.first.entry.link }
+
+  it "finds type" do
+    link.type.should == "text/html"
+  end
+  
+
+  it "finds title" do
+    link.title.should == "15:59:15"
+  end
+
+  it "finds rel" do
+    link.rel.should == "alternate"
+  end
+
+  it "finds href" do
+    link.href.should == "http://superfeedr.com/?1291996755"
+  end  
 end
 
 describe Blather::Stanza::Superfeedr::Author do
+  let(:author) { XMPP_NODE.items.first.entry.authors.first }
+
+  it "finds name" do
+    author.name.should == "Superfeedr"
+  end
+
+  it "finds uri" do
+    author.uri.should == "http://superfeedr.com/"
+  end
+
+  it "finds email" do
+    author.email.should == "julien@superfeedr.com"
+  end
 end
 
 describe Blather::Stanza::Superfeedr::Point do
+  let(:point) { XMPP_NODE.items.first.entry.points.first }
+
+  it "finds long/lat" do
+    point.longtitude.should == "37.773721"
+    point.latitude.should   == "-122.414957"
+  end
+
+  it "finds raw data" do
+    point.raw.should == "37.773721,-122.414957"
+  end  
 end
-
-describe Blather::Stanza::Superfeedr::Category do
-end
-
-
-
-
