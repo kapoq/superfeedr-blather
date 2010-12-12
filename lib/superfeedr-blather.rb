@@ -1,3 +1,6 @@
+# TODO: stripped
+# TODO: chunks
+
 require 'rubygems'
 require 'bundler/setup'
 
@@ -94,19 +97,16 @@ module Blather
       Stanza::Superfeedr::Link.new(child) if child
     end
 
-    def author
-      child = @node.xpath("./atom:author", :atom => ATOM)
-      Stanza::Superfeedr::Author.new(child) if child
+    def authors
+      @node.xpath("./atom:author", :atom => ATOM).map { |child| Stanza::Superfeedr::Author.new(child) }
     end
 
-    def point
-      child = @node.xpath("./geo:point", :geo => GEO)
-      Stanza::Superfeedr::Point.new(child) if child
+    def points
+      @node.xpath("./geo:point", :geo => GEO).map { |child| Stanza::Superfeedr::Point.new(child) }
     end
 
-    def category
-      child = @node.xpath("./atom:category", :atom => ATOM)      
-      Stanza::Superfeedr::Category.new(child) if child
+    def categories
+      @node.xpath("./atom:category", :atom => ATOM).map { |child| Stanza::Superfeedr::Category.new(child) }
     end
 
     private

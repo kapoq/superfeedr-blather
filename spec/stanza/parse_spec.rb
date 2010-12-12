@@ -58,16 +58,16 @@ describe Blather::Stanza::Superfeedr::Entry do
     entry.link.should be_instance_of(Blather::Stanza::Superfeedr::Link)
   end
   
-  it "finds the point" do
-    entry.point.should be_instance_of(Blather::Stanza::Superfeedr::Point)
+  it "finds points" do
+    entry.points.should have(1).item
   end
   
-  it "finds the category" do
-    entry.category.should be_instance_of(Blather::Stanza::Superfeedr::Category)
+  it "finds the categories" do
+    entry.categories.should have(1).item
   end
   
-  it "finds the author" do
-    entry.author.should be_instance_of(Blather::Stanza::Superfeedr::Author)
+  it "finds the authors" do
+    entry.authors.should have(1).item
   end  
 end
 
