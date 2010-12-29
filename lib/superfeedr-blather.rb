@@ -1,5 +1,7 @@
 # TODO: sort out class heirarchy!
 
+# TODO: apply patches to blather
+
 # TODO: stripped
 # TODO: chunks
 
@@ -231,4 +233,22 @@ module Blather
       @point ||= (raw || []) && raw.split(",")
     end    
   end
+
+  class Blather::Stanza::PubSub::Subscriptions
+    def list
+      subscriptions.find('//ns:subscription', :ns => self.class.registered_ns).map do |child|
+        Stanza::Superfeedr::Subscription.new(child)
+      end
+    end
+  end  
+
+  class Stanza::Superfeedr::Subscription < Stanza::Superfeedr
+    def subscription_state
+      content_from("@subscription")
+    end
+
+    def node_url
+      content_from("@node")
+    end    
+  end  
 end

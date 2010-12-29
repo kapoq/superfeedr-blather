@@ -1,4 +1,4 @@
-<message type="chat" from="firehoser.superfeedr.com" to="kapoq@superfeedr.com"><active xmlns="http://jabber.org/protocol/chatstates"/>
+<message type="chat" from="firehoser.superfeedr.com" to="test@superfeedr.com"><active xmlns="http://jabber.org/protocol/chatstates"/>
   <event xmlns="http://jabber.org/protocol/pubsub#event">
     <status xmlns="http://superfeedr.com/xmpp-pubsub-ext" feed="http://superfeedr.com/dummy.xml">
       <http code="200">7462B in 2.441718s, 2/10 new entries</http>

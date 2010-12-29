@@ -1,0 +1,26 @@
+<iq from="firehoser.superfeedr.com" to="test@superfeedr.com/client" type="result" id="subman1">
+  <pubsub xmlns:superfeedr="http://superfeedr.com/xmpp-pubsub-ext" xmlns="http://jabber.org/protocol/pubsub">
+    <subscriptions page="1">
+      <subscription node="http://superfeedr.com/dummy.xml" format="atom" jid="test@superfeedr.com" subscription="subscribed" digest="false">
+        <superfeedr:status>
+          <superfeedr:http code="304">Content not modified</superfeedr:http>
+          <superfeedr:next_fetch>2010-12-29T19:59:27+00:00</superfeedr:next_fetch>
+          <superfeedr:period>14400</superfeedr:period>
+          <superfeedr:last_fetch>2010-12-29T15:59:27+00:00</superfeedr:last_fetch>
+          <superfeedr:last_parse>2010-12-29T11:19:47+00:00</superfeedr:last_parse>
+          <superfeedr:last_maintenance_at>2010-12-29T07:21:29+00:00</superfeedr:last_maintenance_at>
+        </superfeedr:status>
+      </subscription>
+      <subscription node="http://superfeedr.com/fake.xml" format="atom" jid="test@superfeedr.com" subscription="subscribed" digest="false">
+        <superfeedr:status>
+          <superfeedr:http code="2">Content not modified</superfeedr:http>
+          <superfeedr:next_fetch>2010-12-29T19:59:27+00:00</superfeedr:next_fetch>
+          <superfeedr:period>14400</superfeedr:period>
+          <superfeedr:last_fetch>2010-12-29T15:59:27+00:00</superfeedr:last_fetch>
+          <superfeedr:last_parse>2010-12-29T11:19:47+00:00</superfeedr:last_parse>
+          <superfeedr:last_maintenance_at>2010-12-29T07:21:29+00:00</superfeedr:last_maintenance_at>
+        </superfeedr:status>
+      </subscription>
+    </subscriptions>
+  </pubsub>
+</iq>
