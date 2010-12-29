@@ -1,0 +1,31 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    ZenTest (4.4.2)
+    autotest (4.4.6)
+      ZenTest (>= 4.4.1)
+    autotest-notification (2.3.1)
+      autotest (~> 4.3)
+    blather (0.4.14)
+      eventmachine (>= 0.12.6)
+      nokogiri (>= 1.4.0)
+    diff-lcs (1.1.2)
+    eventmachine (0.12.10)
+    nokogiri (1.4.4)
+    rspec (2.3.0)
+      rspec-core (~> 2.3.0)
+      rspec-expectations (~> 2.3.0)
+      rspec-mocks (~> 2.3.0)
+    rspec-core (2.3.1)
+    rspec-expectations (2.3.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.3.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  autotest
+  autotest-notification
+  blather
+  rspec
