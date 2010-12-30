@@ -1,0 +1,5 @@
+<iq type="get" id="subman1" to="firehoser.superfeedr.com" from="test@superfeedr.com/client">
+  <pubsub xmlns="http://jabber.org/protocol/pubsub" xmlns:superfeedr="http://superfeedr.com/xmpp-pubsub-ext">
+    <subscriptions superfeedr:page="1" jid="test@superfeedr.com/client"/>
+  </pubsub>
+</iq>

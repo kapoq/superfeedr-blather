@@ -18,3 +18,27 @@ describe "list of resources/subscriptions" do
     end    
   end
 end
+
+describe "requesting list of resources/subscriptions" do
+  describe Blather::Stanza::PubSub::Subscriptions do
+    let(:node) { @node ||= Blather::Stanza::PubSub::Subscriptions.new(:get, :id => "subman1", :from => "test@superfeedr.com", :to => "firehoser.superfeedr.com") }
+    
+    it "includes correct to, from, and id attributes in the <iq> node" do
+      node["from"].should == "test@superfeedr.com"
+      node["to"].should   == "firehoser.superfeedr.com"
+      node["id"].should   == "subman1"
+    end
+    
+    it "includes superfeedr namespace in the <pubsub> node" do
+      pubsub_node = node.find_first(".//ns:subscriptions", :ns => Blather::Stanza::PubSub.registered_ns)
+      pubsub_node.namespaces["xmlns:superfeedr"].should == "http://superfeedr.com/xmpp-pubsub-ext"
+    end
+    
+    it "includes page and jid in the <subscriptions> node" do
+      subscriptions_node = node.find_first(".//ns:subscriptions", :ns => Blather::Stanza::PubSub.registered_ns)
+      subscriptions_node["jid"].should == "test@superfeedr.com"
+      subscriptions_node["superfeedr:page"].should == "1"
+    end    
+  end  
+end
+

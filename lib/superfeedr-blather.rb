@@ -1,7 +1,9 @@
 # TODO: sort out class heirarchy!
-
 # TODO: apply patches to blather
+# TODO: dry-up namespaces
+# TODO: copy ActiveRecord casting
 
+# notifications extensions:
 # TODO: stripped
 # TODO: chunks
 
@@ -14,6 +16,8 @@ ATOM     = "http://www.w3.org/2005/Atom"
 GEO      = "http://www.georss.org/georss"
 PS_EVENT = "http://jabber.org/protocol/pubsub#event"
 PS_EXT   = "http://superfeedr.com/xmpp-pubsub-ext"
+
+require File.expand_path(File.dirname(__FILE__)) + '/blather/subscriptions'
 
 module Blather
   class Stanza::PubSub::Event
@@ -233,14 +237,6 @@ module Blather
       @point ||= (raw || []) && raw.split(",")
     end    
   end
-
-  class Blather::Stanza::PubSub::Subscriptions
-    def list
-      subscriptions.find('//ns:subscription', :ns => self.class.registered_ns).map do |child|
-        Stanza::Superfeedr::Subscription.new(child)
-      end
-    end
-  end  
 
   class Stanza::Superfeedr::Subscription < Stanza::Superfeedr
     def subscription_state
