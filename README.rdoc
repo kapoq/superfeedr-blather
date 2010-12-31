@@ -1,0 +1,64 @@
+= superfeedr-blather
+
+superfeedr-blather implements a Superfeedr[http://superfeedr.com] PubSub XMPP client in Ruby using the Blather gem.
+
+Starting up a connection and echoing new notifications is as easy as this:
+
+ setup YOUR_SUPERFEEDR_USERNAME, YOUR_SUPERFEEDR_PASSWORD
+ 
+ pubsub_event do |e|
+   e.items.each do |i|
+     puts "New post from #{i.entry.title}:"
+     puts i.entry.content
+   end
+ end
+
+== About
+
+You get some patches for Blather and some classes that wrap the stuff
+you want from Superfeedr (entries, authors etc.).
+
+Under-the-hood, Blather uses EventMachine and Nokogiri so it's fast
+and convenient. If you want to daemonize your client, daemon-kit[https://github.com/kennethkalmer/daemon-kit/] comes
+ready with a {blather template}[https://github.com/kennethkalmer/daemon-kit/blob/master/lib/daemon_kit/xmpp.rb].
+
+You might want to compare Superfeedr's own
+superfeedr-ruby[https://github.com/superfeedr/superfeedr-ruby] which
+is based on a different XMPP lib, Skates.
+
+== Tips
+
+Take a look in <tt>/examples</tt> for examples of handling notifications,
+(un)subscribing, and fetching the list of subscriptions.
+
+When you're playing around, subscribe to Superfeedr's <tt>dummy.xml</tt> feed and use the button on
+http://www.superfeedr.com/users/kapoq/feeds/xmpp_console to generate a
+new notification on demand ("show console" displays the button).
+
+== Install
+
+ git clone git://github.com/kapoq/superfeedr-blather.git
+
+== Source and latest version
+
+superfeedr-blather lives at
+https://github.com/kapoq/superfeedr-blather.
+
+Stop by and say hi some time (contribs welcome).
+
+== Author
+
+Dave Nolan / Kapoq Ltd / kapoq.com[http://kapoq.com]
+
+== TODO
+
+* apply patches upstream to blather
+  * loading filename conflicts using bundler
+  * multiple namespaces
+
+* improve type-casting
+
+* implement Superfeedr notifications extensions:
+  * stripped
+  * chunks (No mention in the Superfeedr schema docs but is used elsewhere)
+
