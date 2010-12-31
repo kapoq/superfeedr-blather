@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "notifications" do
   let(:message) { @message ||= open(File.expand_path(File.dirname(__FILE__) + '/../fixtures/notification.xml')) }
   let(:node)    { @node    ||= Blather::XMPPNode.import(Nokogiri::XML.parse(message).root) }
-
+  
   describe Blather::Stanza::PubSub::Event do
     it "finds items" do
       node.should have(2).items
@@ -20,7 +20,7 @@ describe "notifications" do
     end
   end
 
-  describe Blather::Stanza::Superfeedr::Entry do
+  describe Superfeedr::Entry do
     let(:entry) { node.items.first.entry }
 
     it "finds the id" do
@@ -56,7 +56,7 @@ describe "notifications" do
     end
 
     it "finds the link" do
-      entry.link.should be_instance_of(Blather::Stanza::Superfeedr::Link)
+      entry.link.should be_instance_of(Superfeedr::Link)
     end
     
     it "finds points" do
@@ -72,7 +72,7 @@ describe "notifications" do
     end
   end
 
-  describe Blather::Stanza::Superfeedr::Status do
+  describe Superfeedr::Status do
     let(:status) { node.status }
     
     it "finds the title" do
@@ -100,14 +100,13 @@ describe "notifications" do
     end  
   end
 
-  describe Blather::Stanza::Superfeedr::Link do
+  describe Superfeedr::Link do
     let(:link) { node.items.first.entry.link }
 
     it "finds type" do
       link.type.should == "text/html"
     end
     
-
     it "finds title" do
       link.title.should == "15:59:15"
     end
@@ -121,7 +120,7 @@ describe "notifications" do
     end  
   end
 
-  describe Blather::Stanza::Superfeedr::Author do
+  describe Superfeedr::Author do
     let(:author) { node.items.first.entry.authors.first }
 
     it "finds name" do
@@ -137,7 +136,7 @@ describe "notifications" do
     end
   end
 
-  describe Blather::Stanza::Superfeedr::Point do
+  describe Superfeedr::Point do
     let(:point) { node.items.first.entry.points.first }
 
     it "finds long/lat" do

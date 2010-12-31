@@ -10,7 +10,7 @@ describe "list of resources/subscriptions" do
     end
   end
 
-  describe Blather::Stanza::Superfeedr::Subscription do
+  describe Superfeedr::Subscription do
     let(:sub) { node.list.first }
 
     it "finds subscription state" do
@@ -31,13 +31,13 @@ describe "requesting list of resources/subscriptions" do
     
     it "includes superfeedr namespace in the <pubsub> node" do
       pubsub_node = node.find_first(".//ns:subscriptions", :ns => Blather::Stanza::PubSub.registered_ns)
-      pubsub_node.namespaces["xmlns:superfeedr"].should == "http://superfeedr.com/xmpp-pubsub-ext"
+      pubsub_node.namespaces["xmlns:sf"].should == "http://superfeedr.com/xmpp-pubsub-ext"
     end
     
     it "includes page and jid in the <subscriptions> node" do
       subscriptions_node = node.find_first(".//ns:subscriptions", :ns => Blather::Stanza::PubSub.registered_ns)
       subscriptions_node["jid"].should == "test@superfeedr.com"
-      subscriptions_node["superfeedr:page"].should == "1"
+      subscriptions_node["sf:page"].should == "1"
     end    
   end  
 end
