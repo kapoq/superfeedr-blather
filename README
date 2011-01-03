@@ -58,7 +58,10 @@ Dave Nolan / Kapoq Ltd / kapoq.com[http://kapoq.com]
 
 * improve type-casting
 
+* implement superfeedr-specific handlers
+
+* swap out default client so there's no attempt to load roster on connect
+
 * implement Superfeedr notifications extensions:
   * stripped
   * chunks (No mention in the Superfeedr schema docs but is used elsewhere)
-
