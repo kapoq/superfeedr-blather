@@ -61,6 +61,7 @@ Dave Nolan / Kapoq Ltd / kapoq.com[http://kapoq.com]
 * apply patches upstream to blather
   * loading filename conflicts using bundler
   * multiple namespaces
+  * append to existing handlers (e.g. DaemonKit::XMPP stomps over client#when_ready)
 
 * improve type-casting
 
