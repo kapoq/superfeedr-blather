@@ -20,9 +20,6 @@ Jeweler::Tasks.new do |gem|
   gem.description = %Q{You get some patches for Blather and some classes that wrap the stuff you want from Superfeedr (entries, authors etc.). Under-the-hood, Blather uses EventMachine and Nokogiri so it’s fast and convenient. If you want to daemonize your client, daemon-kit comes ready with a blather template.}
   gem.email = "dave@kapoq.com"
   gem.authors = ["dave@kapoq.com"]
-  # Include your dependencies below. Runtime dependencies are required when using your gem,
-  # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
-  # gem.add_runtime_dependency 'blather', '~> 0.4.14'
 end
 Jeweler::RubygemsDotOrgTasks.new
 
