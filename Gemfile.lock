@@ -11,7 +11,13 @@ GEM
       nokogiri (>= 1.4.0)
     diff-lcs (1.1.2)
     eventmachine (0.12.10)
+    git (1.2.5)
+    jeweler (1.5.2)
+      bundler (~> 1.0.0)
+      git (>= 1.2.5)
+      rake
     nokogiri (1.4.4)
+    rake (0.8.7)
     rspec (2.3.0)
       rspec-core (~> 2.3.0)
       rspec-expectations (~> 2.3.0)
@@ -20,6 +26,7 @@ GEM
     rspec-expectations (2.3.0)
       diff-lcs (~> 1.1.2)
     rspec-mocks (2.3.0)
+    yard (0.6.4)
 
 PLATFORMS
   ruby
@@ -27,5 +34,7 @@ PLATFORMS
 DEPENDENCIES
   autotest
   autotest-notification
-  blather
+  blather (~> 0.4.14)
+  jeweler (~> 1.5.2)
   rspec
+  yard (~> 0.6.0)
