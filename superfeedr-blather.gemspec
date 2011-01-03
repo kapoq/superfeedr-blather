@@ -40,7 +40,8 @@ Gem::Specification.new do |s|
     "spec/fixtures/resources_list_request.xml",
     "spec/spec_helper.rb",
     "spec/stanza/notification_spec.rb",
-    "spec/stanza/subscriptions_spec.rb"
+    "spec/stanza/subscriptions_spec.rb",
+    "superfeedr-blather.gemspec"
   ]
   s.homepage = %q{http://github.com/kapoq/superfeedr-blather}
   s.licenses = ["MIT"]
