@@ -1,4 +1,5 @@
 module Superfeedr
+  FIREHOSER = "firehoser.superfeedr.com"
   MAX_SIMULTANEOUS_SUBSCRIPTION_REQUESTS = 30
   
   class Node
