@@ -197,14 +197,4 @@ module Superfeedr
       @point ||= (raw || []) && raw.split(",")
     end    
   end
-
-  class Subscription < Node
-    def subscription_state
-      content_from("@subscription")
-    end
-
-    def node_url
-      content_from("@node")
-    end    
-  end  
 end

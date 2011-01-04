@@ -25,11 +25,9 @@ module Blather
           aff
         end
 
-        def list
-          subscriptions.find('//ns:subscription', :ns => self.class.registered_ns).map do |child|
-            Superfeedr::Subscription.new(child)
-          end
-        end
+        def subscribed
+          (list[:subscribed] || []).map { |h| h[:node] }
+        end        
       end
     end
   end
