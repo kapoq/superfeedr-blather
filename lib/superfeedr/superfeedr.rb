@@ -1,4 +1,6 @@
 module Superfeedr
+  MAX_SIMULTANEOUS_SUBSCRIPTION_REQUESTS = 30
+  
   class Node
     def initialize(node)
       @node = node
