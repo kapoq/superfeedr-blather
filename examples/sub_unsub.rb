@@ -36,10 +36,8 @@ end
 
 # Subscription requests receive a stanza with the subscription
 # status. Helpful.
-pubsub_subscription do |sub|
-  if sub.node == DUMMY
-    Blather.logger.info "#{sub.node} is #{sub.subscription}"
-  end  
+pubsub_subscription :node => DUMMY do |sub|
+  Blather.logger.info "#{sub.node} is #{sub.subscription}"
 end
 
 # Unsubscription requests just receive iq reply...
