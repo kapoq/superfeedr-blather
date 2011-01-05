@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    superfeedr-blather (0.1.1)
-      blather (~> 0.4.14)
+    superfeedr-blather (0.2.1)
+      blather (~> 0.4)
 
 GEM
   remote: http://rubygems.org/
@@ -40,7 +40,7 @@ PLATFORMS
 DEPENDENCIES
   autotest
   autotest-notification
-  blather (~> 0.4.14)
+  blather (~> 0.4)
   jeweler (~> 1.5.2)
   rspec
   superfeedr-blather!

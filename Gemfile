@@ -1,7 +1,5 @@
 source "http://rubygems.org"
 
-gem 'blather', "~> 0.4.14"
-
 group :development do
   gem "jeweler", "~> 1.5.2"
   gem "yard", "~> 0.6.0"
@@ -13,4 +11,4 @@ group :test do
   gem 'autotest-notification', :require => 'autotest_notification'
 end
 
-gemspec :name => "superfeedr-blather"
+gemspec
