@@ -5,8 +5,11 @@ group :development do
   gem "yard", "~> 0.6.0"
 end
 
-group :test do
+group :development, :test do
   gem 'rspec'
+end
+
+group :test do
   gem 'autotest'
   gem 'autotest-notification', :require => 'autotest_notification'
 end

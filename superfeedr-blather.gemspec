@@ -34,6 +34,7 @@ Gem::Specification.new do |s|
     "lib/blather/namespaces.rb",
     "lib/blather/pubsub.rb",
     "lib/blather/subscriptions.rb",
+    "lib/blather/unsubscribe.rb",
     "lib/superfeedr-blather.rb",
     "lib/superfeedr/superfeedr.rb",
     "spec/fixtures/notification.xml",
